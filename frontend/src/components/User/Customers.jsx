@@ -12,7 +12,9 @@ function Customers() {
   const navigate = useNavigate();
   const getUserList = async () => {
     try {
-      const response = await axiosInstance.get("/user/fetchAllUsers");
+      const response = await axiosInstance.get(
+        "/user/fetchAllUsers/" + user._id
+      );
       // console.log(response);
       setUserList(response.data);
     } catch (error) {

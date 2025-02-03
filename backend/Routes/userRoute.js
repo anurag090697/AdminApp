@@ -19,7 +19,7 @@ userRoute.post("/login", userLogin);
 userRoute.get("/checkLogged", alreadyLoggedUser);
 userRoute.patch("/editProfile", editProfile);
 userRoute.delete("/deleteUser", deleteProfile);
-userRoute.get("/fetchAllUsers", getAllUsers);
+userRoute.get("/fetchAllUsers/:id", getAllUsers);
 userRoute.get('/logout',logoutUser);
 userRoute.get('/getNumberData', getNumberData);
 

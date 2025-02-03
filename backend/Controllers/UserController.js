@@ -113,13 +113,14 @@ export const deleteProfile = async (req, res) => {
 
 export const getAllUsers = async (req, res) => {
   try {
-    const { adminApp } = req.cookies;
-    // console.log(adminApp);
-    const verifyToken = jwt.verify(adminApp, process.env.JWT_SECRET);
-    if (!adminApp || !verifyToken) {
-      return res.status(404).json({ message: "", error: "Not logged" });
-    }
-    const findUser = await userModel.findById(verifyToken.userId);
+    // const { adminApp } = req.cookies;
+    // // console.log(adminApp);
+    // const verifyToken = jwt.verify(adminApp, process.env.JWT_SECRET);
+    // if (!adminApp || !verifyToken) {
+    //   return res.status(404).json({ message: "", error: "Not logged" });
+    // }
+    const { id } = req.params;
+    const findUser = await userModel.findById(id);
     if (!findUser || findUser.role == "customer") {
       return res.status(404).json({ message: "", error: "User not found." });
     }
@@ -155,13 +156,11 @@ export const getNumberData = async (req, res) => {
     const findTickets = await ticketModel.find({});
 
     const solvedTickets = await ticketModel.find({ status: "closed" });
-    res
-      .status(200)
-      .json({
-        users: findNumUser.length,
-        tickets: findTickets.length,
-        resolved: solvedTickets.length,
-      });
+    res.status(200).json({
+      users: findNumUser.length,
+      tickets: findTickets.length,
+      resolved: solvedTickets.length,
+    });
   } catch (error) {
     res.status(500).json({ error: error });
   }
