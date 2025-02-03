@@ -87,15 +87,15 @@ function Ticket() {
     if (user.logged) getAllTickets();
   }, [user]);
   return (
-    <div className='bg-violet-100 w-full dark:bg-violet-950 text-sky-400'>
+    <div className='bg-violet-100 pt-16 w-full dark:bg-violet-950 text-sky-400'>
       <h2 className='text-center py-6 text-3xl'>Tickets</h2>
       <div className='w-4/5 mx-auto p-3 rounded-md flex flex-col gap-3 items-center justify-center border-2 border-slate-400'>
         {allTickets.length ? (
           <>
             {" "}
-            <div className='w-full border-b-2 border-slate-400 grid grid-cols-5 items-center justify-center p-2 text-center text-2xl text-blue-800 dark:text-blue-100'>
+            <div className='w-full border-b-2 border-slate-400 grid grid-cols-2 sm:grid-cols-5 items-center justify-center p-2 text-center text-2xl text-blue-800 dark:text-blue-100'>
               <h2 className='col-span-1'>Title</h2>
-              <h2 className='col-span-3'>Description</h2>
+              <h2 className='hidden sm:block col-span-3'>Description</h2>
               <h2 className='col-span-1'>Status</h2>
             </div>
             {allTickets.map((ele, idx) => {
@@ -103,10 +103,10 @@ function Ticket() {
                 <div
                   key={idx}
                   onClick={() => setSelectedTicket(ele)}
-                  className='w-full border-b border-slate-400 grid grid-cols-5 items-center justify-center p-2 text-center text-xl text-cyan-700 dark:text-cyan-100 hover:bg-sky-300'
+                  className='w-full border-b border-slate-400 grid grid-cols-2 sm:grid-cols-5 items-center justify-center p-2 text-center text-xl text-cyan-700 dark:text-cyan-100 hover:bg-sky-300'
                 >
                   <h3 className='col-span-1'>{ele.title}</h3>
-                  <p className='col-span-3'>{ele.description}</p>
+                  <p className='hidden sm:block col-span-3'>{ele.description}</p>
                   <h3 className='col-span-1'>{ele.status}</h3>
                 </div>
               );
@@ -118,7 +118,7 @@ function Ticket() {
           </p>
         )}
       </div>
-      {!addTicket && (
+      {!addTicket &&  user.role == 'customer' && (
         <div className='flex items-center justify-center p-4 '>
           <button
             onClick={() => setAddTicket(true)}
@@ -170,9 +170,9 @@ function Ticket() {
               }
               className='col-span-3 py-2 px-3 text-center rounded-lg shadow-md shadow-cyan-900 outline-none focus:ring-2 ring-violet-600 font-medium dark:bg-cyan-800'
             ></textarea>
-            <button className='w-full p-2 bg-emerald-600 text-2xl text-white rounded-md hover:bg-emerald-500'>
+             <button className='w-full p-2 bg-emerald-600 text-2xl text-white rounded-md hover:bg-emerald-500'>
               Raise Ticket
-            </button>
+            </button> 
           </form>
         </div>
       )}

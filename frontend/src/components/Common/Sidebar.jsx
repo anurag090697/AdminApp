@@ -94,12 +94,13 @@ function Sidebar() {
   };
 
   return (
-    <div
-      className={`h-dvh w-64 p-10 bg-violet-200 border-r-2 border-slate-400 absolute top-0 left-0 ${
+    <aside
+      className={`h-dvh w-64 p-10 bg-white fixed top-16 left-0 border border-slate-400 ${
         sidebar ? "" : "hidden"
-      } dark:bg-sky-950 dark:text-gray-200 z-30`}
+      } dark:bg-sky-900 dark:text-gray-200 z-30`}
     >
       <button
+        title='Close Sidebar'
         className={`absolute top-1 right-1 hover:text-rose-500 hover:bg-gray-700 ${
           sidebar ? "text-2xl" : "hidden"
         }`}
@@ -107,22 +108,18 @@ function Sidebar() {
       >
         <IoMdMenu />
       </button>
-      <h1 className='text-2xl flex mx-auto items-center justify-center'>
-        AdminApp{" "}
-        <span className='text-violet-700'>
-          <BsCart4 />
-        </span>
-      </h1>
+
       <div className='flex flex-col items-center justify-evenly gap-3 my-4 min-h-44 md:min-h-96 text-xl font-medium text-blue-800 dark:text-blue-100'>
         {links}
       </div>
+      <hr className=' w-full pb-10' />
       <button
         onClick={() => logOut()}
         className='flex items-center gap-3 justify-center bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 text-xl rounded-lg'
       >
         Log Out <CiLogout />
       </button>
-    </div>
+    </aside>
   );
 }
 

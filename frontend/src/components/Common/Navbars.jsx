@@ -3,7 +3,7 @@
 import React, { useContext, useState } from "react";
 import { IoMdMenu } from "react-icons/io";
 import { NavLink } from "react-router-dom";
-
+import { BsCart4 } from "react-icons/bs";
 import { MdDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
 import { AppContext } from "../../Context/AppContext";
@@ -28,19 +28,28 @@ function Navbar() {
   return (
     <header className='flex w-full dark:text-gray-100 max-w-full'>
       <nav
-        className={`flex items-center ${
-          sidebar ? "justify-end" : "justify-between"
-        } h-16 bg-white dark:bg-sky-900 w-full px-3 md:px-10 border-b-2 border-slate-400`}
+        className={`flex items-center justify-between h-16 bg-white dark:bg-sky-900 w-full px-3 md:px-10 border border-slate-400 fixed top-0 right-0`}
       >
-        <button
-          className={`${
-            sidebar ? "hidden" : "text-3xl"
-          } hover:text-sky-500 hover:bg-gray-700`}
-          onClick={() => setSidebar((prev) => !prev)}
-        >
-          <IoMdMenu />
-        </button>{" "}
-        <div className='flex items-center justify-center gap-6'>
+        <div className='flex items-center justify-between gap-3'>
+          {" "}
+          <button
+            title='Open Sidebar'
+            className={`${
+              sidebar ? "hidden" : "text-3xl"
+            } hover:text-sky-500 hover:bg-gray-700`}
+            onClick={() => setSidebar((prev) => !prev)}
+          >
+            <IoMdMenu />
+          </button>{" "}
+          <h1 className='text-2xl hidden sm:flex mx-auto items-center justify-center'>
+            AdminApp{" "}
+            <span className='text-violet-700'>
+              <BsCart4 />
+            </span>
+          </h1>
+        </div>
+
+        <div className='flex items-center justify-center gap-6 '>
           {user.logged ? (
             <div className='flex items-center justify-center gap-2 text-xl'>
               {" "}
@@ -57,6 +66,7 @@ function Navbar() {
             className={`flex gap-4 text-xl py-2 px-3 rounded-3xl border select-none relative dark:text-amber-300 dark:bg-sky-900 bg-amber-200`}
           >
             <span
+              title={`Turn on ${dark ? "light" : "dark"} mode`}
               className={`rounded-full border w-8 h-8 absolute top-0.5 left-2 ${
                 dark ? "translate-x-8 bg-rose-800" : "bg-sky-400"
               } ease-out duration-500 transition-all`}

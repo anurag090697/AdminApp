@@ -49,7 +49,7 @@ function Profile() {
   };
 
   return (
-    <div className='bg-violet-100 w-full dark:bg-violet-950 text-sky-400 select-none flex justify-center items-center flex-col'>
+    <div className='bg-violet-100 pt-16 w-full dark:bg-violet-950 text-sky-400 select-none flex justify-center items-center flex-col'>
       <h1 className='text-center py-4 text-3xl'>Profile</h1>
       {editing ? (
         <>

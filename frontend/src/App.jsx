@@ -38,9 +38,9 @@ function App() {
         className={`container min-w-full min-h-dvh relative overflow-x-hidden bg-violet-100 w-full dark:bg-violet-950 ${
           sidebar ? "md:pl-64" : ""
         }`}
-      >
+      ><Navbar></Navbar>
         <Sidebar></Sidebar>
-        <Navbar></Navbar>
+        
         <Routes>
           <Route
             element={

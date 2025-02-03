@@ -44,7 +44,7 @@ function Login() {
   }, [responseMsg]);
 
   return (
-    <div className=' w-full h-dvh flex items-center justify-center absolute z-40 top-0 right-0 bg-gray-700'>
+    <div className=' w-full h-dvh pt-16 flex items-center justify-center absolute z-40 top-0 right-0 bg-gray-700'>
       <div className='border w-fit px-6 py-4 rounded-xl shadow-md shadow-cyan-900  bg-gradient-to-tl from-gray-300 to-cyan-100/10'>
         <h1 className='text-2xl font-medium text-violet-50 mb-3 mx-auto w-fit'>
           LogIn

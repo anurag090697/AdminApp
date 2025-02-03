@@ -1,13 +1,19 @@
 /** @format */
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../Context/AppContext";
 
 function PrivateRoute({ children }) {
   const navigate = useNavigate();
   const { user } = useContext(AppContext);
-  return user.logged ? children : navigate("/login");
+
+  useEffect(() => {
+    if (!user.logged) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+  return children;
 }
 
 export default PrivateRoute;

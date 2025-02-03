@@ -27,7 +27,7 @@ function Customers() {
     }
   }, [user]);
   return (
-    <div className='bg-violet-100 w-full dark:bg-violet-950 text-sky-900 dark:text-sky-100'>
+    <div className='bg-violet-100 w-full dark:bg-violet-950 text-sky-900 dark:text-sky-100 pt-16'>
       <h1 className='py-6 text-3xl text-center'>Users</h1>
       <div className='flex  items-center gap-3 justify-center flex-col mx-auto p-2 md:p-10'>
         <div className='lg:flex flex-wrap items-center justify-start w-full hidden p-2 text-2xl text-cyan-900 dark:text-violet-200 border bg-violet-300 dark:bg-transparent dark:underline border-slate-600'>
